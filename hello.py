@@ -26,7 +26,7 @@ def ejecutarAnal(cadena):
 	palabras = cadena.split(' ')
 	txt_analizado =""
 	for pal in palabras:
-		txt_analizado += os.popen('echo '+pal+'| analyze -f /usr/local/share/freeling/config/es.cfg').read()[:-1]
+		txt_analizado += os.popen('echo '+pal+'| analyze -f am.cfg').read()[:-1]
 		txt_analizado += os.popen('php stemm_es.php "'+pal+'"').read()
 		txt_analizado += '\n'
 	return txt_analizado
