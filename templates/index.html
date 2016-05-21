@@ -10,30 +10,73 @@
 <head>
 	<title>PLN</title>
 </head>
-<body>
-	<h2>ANALISIS MOFOLOGICO FREELING</h2>
-	<hr>
+<body style='background-image: url("/static/fondo.jpg"); background-size: 100%; background-repeat: repeat;'>
+	<div class="container-fluid">
+	<div class="row">
+	    <div class="col-sm-4" >
+	    	<img class="img-responsive" src="/static/PLN_imagen.jpg" alt="Chania" width="190" height="190"> 
+	    </div>
+	    <div class="col-sm-4" style="color: black;">
+			
+				<h2 align="center"><font color="blue">FREELING</font></h2>
+				<h4 align="center">Analisis Morfologico</h4>
+				<h4 align="center">Stemmer</h4>
+				<h4 align="center">Lematizador</h4>
+				<h5 align="center">En espanol</h5>
+				<hr style="color: #123455; height: 1px; background-color: #123455;">
+		</div>
+	</div>
+	<p align="center"><i>Brayan Rodriguez - Nelson Portilla</i></p> 
 	<div class="container">
 		<div class="panel-body">
 			<form action="." method="POST">
 			<i>Digite el texto:</i><br>
-			<textarea class="form-control" rows="5" name="id_entrada" id="id_entrada">{{texto}}</textarea>
-			<input type="submit" onclick="gettext()" class="btn btn-primary"> Analizar!</input>
+				<textarea style="color: black; background-color: transparent;" class="form-control" rows="5" name="id_entrada" id="id_entrada">{{texto}}</textarea>
+			<span class="glyphicon glyphicon glyphicon-eye-open"></span><input type="submit" class="btn btn-primary" value="Analizar!"></input>
+			<Button type="button" onclick="limpiar()" class="btn btn-danger"><span class="glyphicons glyphicon glyphicon-trash"></span> Limpiar</Button>
 			</form>
 		</div>
+
 		<div class="panel-body">
 			<b>Resultado:<b>
-			<textarea class="form-control", rows="5", name"id_salida" id="id_salida">{{texto_analisis}}</textarea>
+			<!-- <textarea style="color: black; background-color: transparent;" class="form-control", rows="15", name"id_salida" id="id_salida">{{texto_analisis}}</textarea> -->
+
+			<table class="table table-hover">
+			    <thead>
+			      <tr>
+			        <th>Palabras</th>
+			        <th>Lemas</th>
+			        <th>Stemm</th>
+			        <th>Eagles</th>
+			      </tr>
+			      </thead>
+			    <tbody>
+			    	
+				 	{% for obj in objetos %}
+				 	<tr>
+
+				    	<td>{{obj.0}}</td>
+				    	<td>{{obj.1}}</td>
+				    	<td>{{obj.2}}</td>
+				    	<td>{{obj.3}}</td>
+				      
+					</tr>
+				     {% endfor %}
+				</tbody>
+			</table> 
+			
+
+
+
 		</div>
-	</div>
+	</div> 
 
 </body>
 
 <script type="text/javascript">
-function gettext(){
+function limpiar(){
 	var texto;
-	texto=document.getElementById("id_entrada").value;
-	console.log(texto);
+	document.getElementById("id_entrada").value="";
 	}
 </script>
 
