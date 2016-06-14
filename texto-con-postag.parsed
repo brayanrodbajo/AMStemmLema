@@ -1,0 +1,2 @@
+(S (S (NP (NP (NNP Brett) (NNP Smith) (POS 's)) (NN friend)) (VP (VBD had) (VP (VBN committed) (NP (NN suicide))))) (, ,) (S (NP (NP (NP (PRP$ his) (NNS parents)) (VP (VBN divorced))) (CC and) (NP (PRP$ his) (NN dad))) (VP (VBD lost) (NP (PRP$ his) (NN job)))) (. .))
+(S (PP (IN With) (NP (NP (DT a) (NN hug)) (PP (IN from) (NP (NNP John) (NNP Kasich))) (PP (IN at) (NP (DT a) (NN rally))))) (, ,) (NP (PRP he)) (VP (VBD became) (NP (NP (DT the) (NN face)) (PP (IN of) (NP (JJR more) (JJ gentle) (NNS emotions)))) (PP (IN among) (NP (NNP GOP) (NNS voters)))) (. .))
