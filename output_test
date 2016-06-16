@@ -1,0 +1,19 @@
+(ROOT
+  (FRAG
+    (VP
+      (VP
+        (PP
+          (NP (UH Hello))
+          (NP (NP (NNP Mr.)) (VP (NP (NNP Smith,)) (ADVP (WRB how)))))
+        (VBP are)
+        (NP (PRP you)))
+      (SBAR (S (VP (VBG doing) (NP (NN today?))))))))
+(ROOT
+  (S
+    (NP (DT The) (NN weather))
+    (VP
+      (VBZ is)
+      (SBAR
+        (S
+          (NP (NNP great,) (CC and) (NNP Python))
+          (VP (VBZ is) (NP (NN awesome.))))))))

@@ -3,4 +3,28 @@ Hello Mr. Smith, how are you doing today? The weather is great, and Python is aw
 [('The', 'DT'), ('weather', 'NN'), ('is', 'VBZ'), ('great,', 'NNP'), ('and', 'CC'), ('Python', 'NNP'), ('is', 'VBZ'), ('awesome.', 'NN')]
 [('The', 'DT'), ('sky', 'NN'), ('is', 'VBZ'), ('pinkish-blue.', 'NN')]
 [('You', 'PRP'), ("shouldn't", 'VBP'), ('eat', 'VB'), ('cardboard.', 'NN')]
-[Tree('ROOT', [Tree('FRAG', [Tree('VP', [Tree('VP', [Tree('PP', [Tree('NP', [Tree('UH', ['Hello'])]), Tree('NP', [Tree('NP', [Tree('NNP', ['Mr.'])]), Tree('VP', [Tree('NP', [Tree('NNP', ['Smith,'])]), Tree('ADVP', [Tree('WRB', ['how'])])])])]), Tree('VBP', ['are']), Tree('NP', [Tree('PRP', ['you'])])]), Tree('SBAR', [Tree('S', [Tree('VP', [Tree('VBG', ['doing']), Tree('NP', [Tree('NN', ['today?'])])])])])])])]), Tree('ROOT', [Tree('S', [Tree('NP', [Tree('DT', ['The']), Tree('NN', ['weather'])]), Tree('VP', [Tree('VBZ', ['is']), Tree('SBAR', [Tree('S', [Tree('NP', [Tree('NNP', ['great,']), Tree('CC', ['and']), Tree('NNP', ['Python'])]), Tree('VP', [Tree('VBZ', ['is']), Tree('NP', [Tree('NN', ['awesome.'])])])])])])])]), Tree('ROOT', [Tree('S', [Tree('NP', [Tree('DT', ['The']), Tree('NN', ['sky'])]), Tree('VP', [Tree('VBZ', ['is']), Tree('NP', [Tree('NN', ['pinkish-blue.'])])])])]), Tree('ROOT', [Tree('S', [Tree('NP', [Tree('PRP', ['You'])]), Tree('VP', [Tree('VBP', ["shouldn't"]), Tree('VP', [Tree('VB', ['eat']), Tree('NP', [Tree('NN', ['cardboard.'])])])])])])]
+(ROOT
+  (FRAG
+    (VP
+      (VP
+        (PP
+          (NP (UH Hello))
+          (NP (NP (NNP Mr.)) (VP (NP (NNP Smith,)) (ADVP (WRB how)))))
+        (VBP are)
+        (NP (PRP you)))
+      (SBAR (S (VP (VBG doing) (NP (NN today?))))))))
+(ROOT
+  (S
+    (NP (DT The) (NN weather))
+    (VP
+      (VBZ is)
+      (SBAR
+        (S
+          (NP (NNP great,) (CC and) (NNP Python))
+          (VP (VBZ is) (NP (NN awesome.))))))))
+(ROOT
+  (S (NP (DT The) (NN sky)) (VP (VBZ is) (NP (NN pinkish-blue.)))))
+(ROOT
+  (S
+    (NP (PRP You))
+    (VP (VBP shouldn't) (VP (VB eat) (NP (NN cardboard.))))))
