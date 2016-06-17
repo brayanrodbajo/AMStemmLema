@@ -1,0 +1,2 @@
+(S(CONN Entonces)(S(NP (DeD (DA-MS el)(NN-MS elemento)(VAR x)))(VP (VBZ-PI pertenece)(COORD(PP (IN a)(DeD (NPC(DA-MS el)(NN-MS conjunto)(NN-MS complemento)) (PP (IN de)(VAR A))))(CC o)(PP (IN a)(DeD (DA-MS el)(NN-MS conjunto)(VAR A))))(SBAR (PRO (CONN porque) )(S (NP (DeD (NPU (DA-FS la)(NN-FS unión))(PP (IN de) (COORD (DeD (NPC(DA-MS el)(NN-MS conjunto) (NN-MS complemento)) (PP (IN de)(VAR A)))(CC con)(DeD (DA-MS el)(NN-MS conjunto)(VAR A))))))(VP (VBZ-PI es) (ADJP (JJ-CS igual)(PP (IN a)(DeD (DA-MS el)(NN-MS conjunto)(JJ-CS universal)(VAR U)))))))))(. .) )
+
