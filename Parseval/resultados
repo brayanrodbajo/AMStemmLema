@@ -1,0 +1,12 @@
+Primera prueba:
+ptb 001 - Bikel - Arbol S
+Average precision, recall,  cross brackets and F-score:
+(89.65517241379311, 43.333333333333336, 0.0, 58.426966292134836)
+
+Segunda Prueba:
+ptb 003 - ? - Arbol Root
+Average precision, recall,  cross brackets and F-score:
+(42.39934223894128, 39.99447517123621, 0.16493360995258863, 41.16181271248203)
+
+
+
