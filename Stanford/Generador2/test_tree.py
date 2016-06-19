@@ -34,8 +34,8 @@ def create_tree():
 		listas=json.loads(stanford_parse)
 		if "(ROOT" in  stanford_parse:
 			stanford_parse = stanford_parse[stanford_parse.index("(ROOT"):stanford_parse.rindex(")")+1]
-		arbol=open("../Arboles_Stanford/arbol-stanford", "a")
-		arbol.write(stanford_parse+"\n")
+		arbol=open("../Arboles_Ptb/arbol-stanford", "a")
+		arbol.write(stanford_parse[6:-1]+"\n")
 		arbol.close()
 		pal=[]
 		tag=[]
