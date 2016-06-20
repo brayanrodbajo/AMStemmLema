@@ -16,6 +16,9 @@ def generar_arboles():
 	entrenamiento()
 	precarga("input_text")
 
+# def entrenamiento():
+# 	entrenamiento()
+
 if __name__ == '__main__':
 	crear_archivo(sys.argv[1])
 	generar_arboles()

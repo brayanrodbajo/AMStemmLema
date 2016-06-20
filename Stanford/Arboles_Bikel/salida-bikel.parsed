@@ -1,1 +1,1 @@
-(S (NP (NNP Esto)) (VP (VBZ es) (NP (NN un) (NN texto))))
+(S (NP (PRP$ My) (NN dog)) (ADVP (RB also)) (VP (VBZ likes) (VP (VBG eating) (NP (NN sausage)))) (. .))

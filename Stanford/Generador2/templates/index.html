@@ -18,11 +18,11 @@
 	    </div>
 	    <div class="col-sm-4" style="color: black;">
 			
-				<h2 align="center"><font color="blue">FREELING</font></h2>
-				<h4 align="center">Analisis Morfologico</h4>
-				<h4 align="center">Stemmer</h4>
-				<h4 align="center">Lematizador</h4>
-				<h5 align="center">En espanol</h5>
+				<h2 align="center"><font color="blue">Analizadores Probabilisticos</font></h2>
+				<h4 align="center">Stanford</h4>
+				<h4 align="center">Bikel</h4>
+				<h4 align="center">Parseval</h4>
+				<h5 align="center">En Ingles</h5>
 				<hr style="color: #123455; height: 1px; background-color: #123455;">
 		</div>
 	</div>
@@ -32,38 +32,80 @@
 			<form action="." method="POST">
 			<i>Digite el texto:</i><br>
 				<textarea style="color: black; background-color: transparent;" class="form-control" rows="5" name="id_entrada" id="id_entrada">{{texto}}</textarea>
-			<span class="glyphicon glyphicon glyphicon-eye-open"></span><input type="submit" class="btn btn-primary" value="Analizar!"></input>
+			
+			<span class="glyphicon glyphicon glyphicon-eye-open"></span><input type="submit" class="btn btn-primary" value="Ver Arbol!"></input>
 			<Button type="button" onclick="limpiar()" class="btn btn-danger"><span class="glyphicons glyphicon glyphicon-trash"></span> Limpiar</Button>
+
+			<div class="row">
+			  <div class="col-sm-6"><b>Arbol Stanford</b>
+			  <p align="left">
+								  {{tr_stanford}}
+    </p>
+			  </div>
+			  <div class="col-sm-6"><b>Arbol Bikel</b><br>
+								   {{tr_bikel}}
+					    
+
+			  </div>
+			</div>
+
+
+			
 			</form>
 		</div>
 
 		<div class="panel-body">
-			<b>Resultado:<b>
+			<b>PARSEVAL:</b>
+			<p><i>Para este caso el arbol con el cual se realiza el analisis es con el raw-text 0001 de PTB</i></p>
 			<!-- <textarea style="color: black; background-color: transparent;" class="form-control", rows="15", name"id_salida" id="id_salida">{{texto_analisis}}</textarea> -->
 
-			<table class="table table-hover">
+			<div class="row">
+			  <div class="col-sm-4"><b>Arbol Stanford</b>
+			  <p align="center">
+								  (ROOT
+					  (S
+					    
+					          (NP (NN sausage)))))
+					    (. .)))
+    </p>
+			  
+    			<table class="table table-hover">
 			    <thead>
 			      <tr>
-			        <th style="color: blue;">Palabras</th>
-			        <th style="color: blue;">Lemas</th>
-			        <th style="color: blue;">Stemm</th>
-			        <th style="color: blue;">Eagles</th>
+			        <th style="color: blue;">Recall</th>
+			        <th style="color: blue;">Precision</th>
 			      </tr>
 			      </thead>
 			    <tbody>
-			    	
-				 	{% for obj in objetos %}
 				 	<tr>
-
-				    	<td>{{obj.0}}</td>
-				    	<td>{{obj.1}}</td>
-				    	<td>{{obj.2}}</td>
-				    	<td>{{obj.3}}</td>
-				      
+				    	<td>{{result_recall_bikel}}</td>
+				    	<td>{{result_precision_bikel}}</td>
 					</tr>
-				     {% endfor %}
 				</tbody>
 			</table> 
+			  </div>
+			  <div class="col-sm-4"><b>Arbol Bikel</b><br>
+								  (ROOT
+					  (S
+					    
+
+			  
+			<table class="table table-hover">
+			    <thead>
+			      <tr>
+			        <th style="color: blue;">Recall</th>
+			        <th style="color: blue;">Precision</th>
+			      </tr>
+			      </thead>
+			    <tbody>
+				 	<tr>
+				    	<td>{{result_recall_bikel}}</td>
+				    	<td>{{result_precision_stanford}}</td>
+					</tr>
+				</tbody>
+			</table> 
+			  </div>
+			</div>
 			
 
 

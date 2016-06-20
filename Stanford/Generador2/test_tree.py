@@ -3,10 +3,15 @@
 from corenlp import StanfordCoreNLP
 import json
 import sys, os
+from nltk import tokenize
+from nltk.tokenize import sent_tokenize
+
 reload(sys)  
 sys.setdefaultencoding('utf8')
 global oraciones,coreStanfordNLP
 
+# corenlp_dir = "../stanford-corenlp-full-2014-08-27/"
+# coreStanfordNLP = StanfordCoreNLP(corenlp_dir)
 
 
 def entrenamiento():
@@ -22,7 +27,15 @@ def precarga(archivo):
 	fileraw = open(archivo, 'r')
 	oraciones=[]
 	textoraw = fileraw.read()
-	oraciones=textoraw.split('\n')
+	limpio = textoraw.replace('\r\n', ' ')
+	# limpio = limpio.replace('. ', '.')
+	# print "Antes de Tokenize: ", limpio
+	sents = sent_tokenize(limpio)
+	# print "Resultado: ",sents
+	# oraciones=limpio.split('.')
+	oraciones=sents
+	# oraciones.pop()
+	# print "MANUAL: ",oraciones
 	fileraw.close()
 	create_tree()
 
@@ -34,7 +47,7 @@ def create_tree():
 		listas=json.loads(stanford_parse)
 		if "(ROOT" in  stanford_parse:
 			stanford_parse = stanford_parse[stanford_parse.index("(ROOT"):stanford_parse.rindex(")")+1]
-		arbol=open("../Arboles_Stanford/arbol-stanford", "a")
+		arbol=open("../Arboles_Ptb/arbol-stanford", "w")
 		arbol.write(stanford_parse+"\n")
 		arbol.close()
 		pal=[]
@@ -60,7 +73,7 @@ def armarBikel(palabras, tags):
 		i+=1
 	bikel="("+bikel+")"
 	#print "BIKEL \n",bikel
-	f=open("../Arboles_Bikel/salida-bikel", "a")
+	f=open("../Arboles_Bikel/salida-bikel", "w")
 	f.write(bikel+"\n")
 	f.close()
 	
@@ -74,7 +87,7 @@ def analizar_arbol(arbol1, arbol2):
 	Modelo.parseval(arbol1, arbol2)
 	print "EXITO :)"
 
-# if __name__ == '__main__':
-# 	entrenamiento()
-# 	precarga(sys.argv[1])
+if __name__ == '__main__':
+	entrenamiento()
+	precarga(sys.argv[1])
 	# analizar_arbol("../Stanford/salida-bikel.parsed", "../wsj_0001.mrg")
