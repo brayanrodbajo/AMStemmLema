@@ -10,7 +10,8 @@ app = Flask(__name__)
 @app.route('/')
 def cargar():
 	print 'Entro en cargar'
-	return render_template('index.html')
+	train()
+	return render_template('index.html', result_precision_bikel="9")
 	
 
 @app.route('/', methods=['POST'])
@@ -20,7 +21,7 @@ def obtener():
 	texto=str(request.form['id_entrada'])
 	print ("Texto Recibido: ", texto)
 	trees=["a","b"]
-	# trees=crear_arboles(texto)
+	trees=crear_arboles(texto)
 	#print(analisis_morfo)
 	return render_template('index.html', texto=texto, tr_stanford=trees[0], tr_bikel=trees[1], result_precision_bikel="0.1", result_recall_bikel="0.11", result_precision_stanford="0.8", result_recall_stanford="0.88")
 
@@ -52,9 +53,6 @@ def leerArboles():
 	stanford_bikel.append(bikel_string)
 	return stanford_bikel
 
-@app.route('/train')
-def info():
-	print "ENTRON EN GET INFO"
 
 if __name__ == '__main__':
 	app.run(host='0.0.0.0', debug=True, port=12345, use_reloader=True)

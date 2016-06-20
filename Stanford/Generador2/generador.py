@@ -13,11 +13,11 @@ def crear_archivo(texto):
 	fileraw.close()
 
 def generar_arboles():
-	entrenamiento()
+	# entrenamiento()
 	precarga("input_text")
 
-# def entrenamiento():
-# 	entrenamiento()
+def train():
+	entrenamiento()
 
 if __name__ == '__main__':
 	crear_archivo(sys.argv[1])
