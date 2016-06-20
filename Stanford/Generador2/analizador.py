@@ -11,7 +11,8 @@ app = Flask(__name__)
 def cargar():
 	print 'Entro en cargar'
 	train()
-	return render_template('index.html', result_precision_bikel="9")
+	parseval=do_parseval()
+	return render_template('index.html', result_precision_bikel=str(parseval[0]))
 	
 
 @app.route('/', methods=['POST'])

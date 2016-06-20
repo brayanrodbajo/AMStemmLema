@@ -28,6 +28,7 @@ def precarga(archivo):
 	oraciones=[]
 	textoraw = fileraw.read()
 	limpio = textoraw.replace('\r\n', ' ')
+	limpio = textoraw.replace('.START', '') #Omitir el .START de los archivos de ptb
 	# limpio = limpio.replace('. ', '.')
 	# print "Antes de Tokenize: ", limpio
 	sents = sent_tokenize(limpio)
