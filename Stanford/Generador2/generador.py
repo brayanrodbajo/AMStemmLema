@@ -27,7 +27,7 @@ def do_parseval():
 	precarga("../raw_text_Ptb/wsj_0001")
 	pre_re = model.parseval("../Arboles_Ptb/arbol-stanford", "../Arboles_Ptb/wsj_0001.mrg")
 	"../Arboles_Bikel/salida-bikel.parsed"
-	print (pre_re)
+	#print (pre_re)
 	return pre_re
 
 if __name__ == '__main__':

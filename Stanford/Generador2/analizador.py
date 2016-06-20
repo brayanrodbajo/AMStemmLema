@@ -12,8 +12,12 @@ def cargar():
 	print 'Entro en cargar'
 	train()
 	parseval=do_parseval()
-	return render_template('index.html', result_precision_bikel=str(parseval[0]))
+	return render_template('index.html', result_precision_stanford=str(parseval[0]),  result_recall_stanford=str(parseval[1]))
 	
+@app.route('/parseval')
+def parseval():
+	parseval=do_parseval()
+	return render_template('index.html', result_precision_stanford=str(parseval[0]),  result_recall_stanford=str(parseval[1]))
 
 @app.route('/', methods=['POST'])
 def obtener(): 

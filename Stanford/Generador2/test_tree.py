@@ -43,27 +43,29 @@ def precarga(archivo):
 def create_tree():
 	global oraciones, coreStanfordNLP
 	print "Creando Arbol..."
+	open('../Arboles_Bikel/salida-bikel', 'w').close() #Se limpia el archivo para solo guardar las oraciones que pertenecen a la anterior entrada.
+	whole_tree= ""
 	for oracion in oraciones:
 		stanford_parse=coreStanfordNLP.parse(oracion)
 		listas=json.loads(stanford_parse)
 		if "(ROOT" in  stanford_parse:
 			stanford_parse = stanford_parse[stanford_parse.index("(ROOT"):stanford_parse.rindex(")")+1]
-		arbol=open("../Arboles_Ptb/arbol-stanford", "w")
-		arbol.write(stanford_parse+"\n")
-		arbol.close()
+		whole_tree+=stanford_parse+"\n"
 		pal=[]
 		tag=[]
 		lista=listas["sentences"][0]["words"]
 		#print (lista)
 		for word in lista:
 			#print word
-
 			pal.append(word[0])
 			tag.append(word[1]["PartOfSpeech"])
 		#print ("lista de palabras:",pal)
 		#print ("lista de tags:",tag)
 		armarBikel(pal,tag)
-		arbolBikel()
+	arbolBikel()
+	arbol=open("../Arboles_Ptb/arbol-stanford", "w")
+	arbol.write(whole_tree)
+	arbol.close()
 
 def armarBikel(palabras, tags):
 	print "Preprocesando Bikel..."
@@ -74,7 +76,7 @@ def armarBikel(palabras, tags):
 		i+=1
 	bikel="("+bikel+")"
 	#print "BIKEL \n",bikel
-	f=open("../Arboles_Bikel/salida-bikel", "w")
+	f=open("../Arboles_Bikel/salida-bikel", "a")
 	f.write(bikel+"\n")
 	f.close()
 	
