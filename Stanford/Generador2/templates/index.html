@@ -6,6 +6,8 @@
 
 <!-- Latest compiled and minified JavaScript -->
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>
+
 <html>
 <head>
 	<title>PLN</title>
@@ -56,20 +58,40 @@
 
 		<div class="panel-body">
 			<b>PARSEVAL:</b>
-			<p><i>Para este caso el arbol con el cual se realiza el analisis es con el raw-text 0001 de PTB</i></p>
+			<p><i>Para este caso el arbol con el cual se realiza el analisis es con el raw_text 0001 de PTB</i>
+	      	</p>
+	      	<p>
+	      		El texto de este raw_text es: {{rawtext}}
+	      	</p>
 			<!-- <textarea style="color: black; background-color: transparent;" class="form-control", rows="15", name"id_salida" id="id_salida">{{texto_analisis}}</textarea> -->
 
 			<div class="row">
-			  <div class="col-sm-4"><b>Arbol Stanford</b>
-			  <p align="center">
-								  (ROOT
-					  (S
-					    
-					          (NP (NN sausage)))))
-					    (. .)))
-    </p>
+			  <div id="stanford_ptb" class="col-sm-4"><b>Arbol Stanford</b>
+			    <p align="center">
+				  {{arbol_stanford_parseval}}
+	    		</p>
 			  
     			<table class="table table-hover">
+			    <thead>
+			      <tr>
+			        <th style="color: blue;">Recall</th>
+			        <th style="color: blue;">Precision</th>
+			      </tr>
+			      </thead>
+			    <tbody>
+				 	<tr>
+				    	<td>{{result_recall_stanford}}</td>
+				    	<td>{{result_precision_stanford}}</td>
+					</tr>
+				</tbody>
+				</table> 
+			  </div>
+			  <div id="bikel_ptb" class="col-sm-4"><b>Arbol Bikel</b><br>
+			  		<p align="center">
+					    {{arbol_bikel_parseval}}
+					</p>
+
+				<table class="table table-hover">
 			    <thead>
 			      <tr>
 			        <th style="color: blue;">Recall</th>
@@ -82,28 +104,10 @@
 				    	<td>{{result_precision_bikel}}</td>
 					</tr>
 				</tbody>
-			</table> 
+				</table> 
 			  </div>
-			  <div class="col-sm-4"><b>Arbol Bikel</b><br>
-								  (ROOT
-					  (S
-					    
-
-			  
-			<table class="table table-hover">
-			    <thead>
-			      <tr>
-			        <th style="color: blue;">Recall</th>
-			        <th style="color: blue;">Precision</th>
-			      </tr>
-			      </thead>
-			    <tbody>
-				 	<tr>
-				    	<td>{{result_recall_bikel}}</td>
-				    	<td>{{result_precision_stanford}}</td>
-					</tr>
-				</tbody>
-			</table> 
+			  <div id="bikel_ptb" class="col-sm-4"><b>Arbol PTB</b><br>
+			  	{{arbol_ptb}}
 			  </div>
 			</div>
 			
@@ -119,7 +123,20 @@
 function limpiar(){
 	var texto;
 	document.getElementById("id_entrada").value="";
-	}
+}
+/*
+$('select').on('change', function() {
+  var val =this.value() ; // or $(this).val()
+  $.ajax({
+  	url: "/parseval",
+  	type: "POST",
+  	data: val,
+  	dataType: "json",
+  	success: function(data){
+
+  	}
+  })
+});*/
 </script>
 
 

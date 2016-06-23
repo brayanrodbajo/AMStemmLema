@@ -21,7 +21,7 @@ def entrenamiento():
 	coreStanfordNLP = StanfordCoreNLP(corenlp_dir)
 	print "Fin Entrenamiento"
 
-def precarga(archivo):
+def precarga(archivo, parseval=False):
 	global oraciones
 	print "Leyendo el archivo..."
 	fileraw = open(archivo, 'r')
@@ -38,9 +38,9 @@ def precarga(archivo):
 	# oraciones.pop()
 	# print "MANUAL: ",oraciones
 	fileraw.close()
-	create_tree()
+	create_tree(parseval)
 
-def create_tree():
+def create_tree(parseval=False):#parseval = true si se requiere quitar el ROOT del stanford para comparar con PTB por parseval
 	global oraciones, coreStanfordNLP
 	print "Creando Arbol..."
 	open('../Arboles_Bikel/salida-bikel', 'w').close() #Se limpia el archivo para solo guardar las oraciones que pertenecen a la anterior entrada.
@@ -50,6 +50,8 @@ def create_tree():
 		listas=json.loads(stanford_parse)
 		if "(ROOT" in  stanford_parse:
 			stanford_parse = stanford_parse[stanford_parse.index("(ROOT"):stanford_parse.rindex(")")+1]
+		if(parseval):
+			stanford_parse="( "+stanford_parse[6:-1]+" )" #quita el ROOT de cada oracion y agrega un paréntesis
 		whole_tree+=stanford_parse+"\n"
 		pal=[]
 		tag=[]

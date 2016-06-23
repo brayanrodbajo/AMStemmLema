@@ -22,13 +22,13 @@ def train():
 import sys
 sys.path.insert(0, '../Parseval')
 from parseval import *
-def do_parseval():
+def do_parseval(n_ptb=1):
 	model = Modelo()
-	precarga("../raw_text_Ptb/wsj_0001")
-	pre_re = model.parseval("../Arboles_Ptb/arbol-stanford", "../Arboles_Ptb/wsj_0001.mrg")
-	"../Arboles_Bikel/salida-bikel.parsed"
-	#print (pre_re)
-	return pre_re
+	precarga("../raw_text_Ptb/wsj_000"+str(n_ptb), True) # true para que le quite el root a los arboles de stanford
+	pre_re_st = model.parseval("../Arboles_Ptb/arbol-stanford", "../Arboles_Ptb/wsj_000"+str(n_ptb)+".mrg")
+	pre_re_bi = model.parseval("../Arboles_Bikel/salida-bikel.parsed", "../Arboles_Ptb/wsj_000"+str(n_ptb)+".mrg")
+	print ("PARSEVAL EN GENERADOR \n"+str(pre_re_st)+"\n"+str(pre_re_bi))
+	return (pre_re_st,pre_re_bi)
 
 if __name__ == '__main__':
 	crear_archivo(sys.argv[1])

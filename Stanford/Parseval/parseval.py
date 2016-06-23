@@ -18,7 +18,6 @@ class Modelo:
  
         def parseval(self,files1,files2):
             ########## Execution start here ##########
-
             startTag = '('
             endTag = ')'
 
@@ -69,7 +68,7 @@ class Modelo:
             except:
                    print 'Invalid file.'
                    sys.exit()
-
+            print ("ARBOLES PARA EL PARSEVAL \n"+text1)
             trees1 = []
             segments1 = []
             parts1 = partition(text1, startTag, endTag)
@@ -88,7 +87,7 @@ class Modelo:
             except:
                    print 'Invalid file.'
                    sys.exit()
-
+            print( "\n"+ text2)
             trees2 = []
             segments2 = []
             parts2 = partition(text2, startTag, endTag)
@@ -145,6 +144,7 @@ class Modelo:
             print ''
             print 'Average precision, recall,  cross brackets and F-score:'
             print (pre1, re1, crossing,fscore)
+            return [pre1, re1, crossing, fscore]
 
 
 if __name__ == "__main__":
