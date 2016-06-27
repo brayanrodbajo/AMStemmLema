@@ -1,15 +1,23 @@
 <!doctype html>
+
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
-<!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
 
-<!-- Latest compiled and minified JavaScript -->
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+<!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script> -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gojs/1.6.7/go-debug.js"></script>
 
 <html>
 <head>
+	<link type="text/css" rel="stylesheet" href="css/animate.css">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap-theme.min.css">
+        <link type="text/css" rel="stylesheet" href="css/bootstrap.min.css">
+        <link type="text/css" rel="stylesheet" href="css/custom.css">
+        <script href="js/jquery-1.11.0.min.js"></script>
+        <script href="js/bootstrap.min.js"></script>
+        <script href="js/wow.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 	<title>PLN</title>
 </head>
 <body style='background-image: url("/static/fondo.jpg"); background-size: 100%; background-repeat: repeat;'>
@@ -55,59 +63,82 @@
 			
 			</form>
 		</div>
-
+		<hr style="color: #123455; height: 1px; background-color: #123455;">
 		<div class="panel-body">
-			<b>PARSEVAL:</b>
-			<p><i>Para este caso el arbol con el cual se realiza el analisis es con el raw_text 0001 de PTB</i>
-	      	</p>
-	      	<p>
-	      		El texto de este raw_text es: {{rawtext}}
-	      	</p>
-			<!-- <textarea style="color: black; background-color: transparent;" class="form-control", rows="15", name"id_salida" id="id_salida">{{texto_analisis}}</textarea> -->
-
+			<h4 align="center"><font color="blue">PARSEVAL</font></h4>
+			<p><i><b>Seleccione un archivo:</b></i></p>
+	      	  <select class="selectpicker" id="combo_arbol">
+	      	  	{% for i in range(1,58) %}
+			    <option>wsj_000{{i}}</option>
+			    {%endfor%}
+			  </select> 
+			 <!--  <option>wsj_0002</option>
+			  <option>wsj_0003</option>
+			  <option>wsj_0004</option> -->
+			  </select>
+	      	<br><b>	El texto de este raw_text es:</b><br>
+	      	<textarea style="color: black; background-color: transparent;" class="form-control" rows="7" name="id_rawtext" id="id_rawtext">raw</textarea>
+			
 			<div class="row">
 			  <div id="stanford_ptb" class="col-sm-4"><b>Arbol Stanford</b>
-			    <p align="center">
-				  {{arbol_stanford_parseval}}
-	    		</p>
+			    
+	    		<textarea style="color: black; background-color: transparent;" class="form-control" rows="10" 
+	    		name="id_stanford" id="id_stanford"></textarea>
 			  
     			<table class="table table-hover">
 			    <thead>
 			      <tr>
 			        <th style="color: blue;">Recall</th>
+			        
 			        <th style="color: blue;">Precision</th>
+			        
 			      </tr>
 			      </thead>
 			    <tbody>
 				 	<tr>
-				    	<td>{{result_recall_stanford}}</td>
-				    	<td>{{result_precision_stanford}}</td>
+				    	<td>
+				    			<textarea style="color: black; background-color: transparent;" class="form-control" rows="2" 
+	    						name="id_stanford" id="id_recall_stanford">recall-stanford</textarea>
+	    				</td>
+				    	<td>
+							<textarea style="color: black; background-color: transparent;" class="form-control" rows="2" 
+				    		name="id_stanford" id="id_precision_stanford">precision-stanford</textarea>
+	    				</td>
 					</tr>
 				</tbody>
 				</table> 
 			  </div>
 			  <div id="bikel_ptb" class="col-sm-4"><b>Arbol Bikel</b><br>
-			  		<p align="center">
-					    {{arbol_bikel_parseval}}
-					</p>
+			  		
+					<textarea style="color: black; background-color: transparent;" class="form-control" rows="10" 
+	    		name="id_rawtext" id="id_bikel"></textarea>
 
 				<table class="table table-hover">
 			    <thead>
 			      <tr>
 			        <th style="color: blue;">Recall</th>
+			        
 			        <th style="color: blue;">Precision</th>
+			        
 			      </tr>
 			      </thead>
 			    <tbody>
 				 	<tr>
-				    	<td>{{result_recall_bikel}}</td>
-				    	<td>{{result_precision_bikel}}</td>
+				    	<td>
+				    		<textarea style="color: black; background-color: transparent;" class="form-control" rows="2" 
+	    						name="id_stanford" id="id_recall_bikel">recall-bikel</textarea>
+	    				</td>
+				    	<td>
+					    	<textarea style="color: black; background-color: transparent;" class="form-control" rows="2" 
+		    					name="id_stanford" id="id_precision_bikel">precisoon-bikel</textarea>
+		    			</td>
 					</tr>
 				</tbody>
 				</table> 
 			  </div>
 			  <div id="bikel_ptb" class="col-sm-4"><b>Arbol PTB</b><br>
-			  	{{arbol_ptb}}
+			  	<textarea style="color: black; background-color: transparent;" class="form-control" rows="10" 
+	    		name="id_ptb" id="id_ptb"></textarea>
 			  </div>
 			</div>
 			
@@ -121,23 +152,63 @@
 
 <script type="text/javascript">
 function limpiar(){
+	console.log( "readys" );
 	var texto;
 	document.getElementById("id_entrada").value="";
 }
-/*
-$('select').on('change', function() {
-  var val =this.value() ; // or $(this).val()
-  $.ajax({
-  	url: "/parseval",
-  	type: "POST",
-  	data: val,
-  	dataType: "json",
-  	success: function(data){
+</script>
+<script type="text/javascript">
+console.log( "ready" );
+$(document).ready(function() {
+console.log( "ready!" );
+$('select.selectpicker').on('change', function(){
+   var selected = $('.selectpicker option:selected').index();
+   console.log(selected);
+   // console.log(combo_arbol.serialize())
+   var seleccion = {
+      data: JSON.stringify({
+                        "value":selected
+                    })
+   }
 
-  	}
-  })
-});*/
+   $.ajax({
+            url: '/parseval',
+            data: seleccion,
+            type: 'POST',
+            success: function(response) {
+            	console.log("ENTRO EN RESPONSE")
+                // console.log(response);
+                var obj=JSON.parse(response);
+                var rawtext=obj["Raw_Text"];
+                var tree_stanford=obj["Arbol_Stanford"]
+                var tree_bikel=obj["Arbol_Bikel"]
+                var tree_ptb=obj["Arbol_PTB"]
+
+                var stanford_precision=obj["Pre_Stan"]
+                var bikel_precision=obj["Pre_Bik"]
+                var stanford_recall=obj["Rec_Stan"]
+                var bikel_recall=obj["Rec_Bik"]
+
+                document.getElementById("id_rawtext").value=rawtext
+                document.getElementById("id_stanford").value=tree_stanford
+                document.getElementById("id_bikel").value=tree_bikel
+                document.getElementById("id_ptb").value=tree_ptb
+                document.getElementById("id_precision_stanford").value=stanford_precision
+                document.getElementById("id_precision_bikel").value=bikel_precision
+                document.getElementById("id_recall_stanford").value=stanford_recall
+                document.getElementById("id_recall_bikel").value=bikel_recall
+
+            },
+            error: function(error) {
+            	console.log("ENTRO EN ERROR")
+                console.log(error);
+            }
+        });
+
+});
+});
 </script>
 
 
 </html>
+
